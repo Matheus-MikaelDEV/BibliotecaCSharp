@@ -28,15 +28,6 @@ public class BibliotecaController
     
     public void AddEmprestimo(Pessoa pessoa)
     {
-        foreach (Emprestimo emprestimo in emprestimos)
-        {
-            if (emprestimo.DataDevolucao > DateTime.Now)
-            {
-                Console.WriteLine("Livro indisponível no momento.");
-                break;
-            }
-        }
-        
         Livro livro = null;
         Console.Write("Digite o nome do Livro: ");
         string nome = Console.ReadLine();
@@ -47,6 +38,15 @@ public class BibliotecaController
             {
                 livro = livro1;
                 break;
+            }
+        }
+        
+        foreach (Emprestimo emprestimo in emprestimos)
+        {
+            if (emprestimo.Produto.Id == livro.Id)
+            {
+                Console.WriteLine("Livro indisponível para empréstimo!");
+                return;
             }
         }
                 

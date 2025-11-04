@@ -34,7 +34,7 @@ public class LoginController
             }
         }
 
-        if (continuar = true)
+        if (continuar == true)
         {
             if (admin == "A")
             {
